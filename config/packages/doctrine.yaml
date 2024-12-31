@@ -1,0 +1,29 @@
+doctrine:
+    dbal:
+        default_connection: wine
+        connections:
+            wine:
+                dbname: "%env(resolve:DATABASE_DBNAME)%"
+                user: "%env(resolve:DATABASE_USER)%"
+                password: "%env(resolve:DATABASE_PASSWORD)%"
+                host: "%env(resolve:DATABASE_HOST)%"
+                server_version: "%env(resolve:DATABASE_VERSION)%"
+                mapping_types:
+                    bit: boolean
+
+        types:
+            UuidType: App\Shared\Infrastructure\Repository\Persistence\Doctrine\CustomType\UuidType
+            StringValueObjectType: App\Shared\Infrastructure\Repository\Persistence\Doctrine\CustomType\StringValueObjectType
+            IntegerValueObjectType: App\Shared\Infrastructure\Repository\Persistence\Doctrine\CustomType\IntegerValueObjectType
+
+    orm:
+        auto_generate_proxy_classes: true
+        naming_strategy: doctrine.orm.naming_strategy.underscore_number_aware
+        auto_mapping: true
+        mappings:
+            App\Wine\Domain\Entity:
+                is_bundle: false
+                type: xml
+                dir: "%kernel.project_dir%/src/Wine/Infrastructure/Repository/Persistence/Doctrine/Entity"
+                prefix: 'App\Wine\Domain\Entity'
+                alias: Entity

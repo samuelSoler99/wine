@@ -1,0 +1,11 @@
+services:
+    _defaults:
+        autoconfigure: true
+        public: true
+        autowire: true
+
+    App\Tests\Fixtures\Wine\:
+        resource: "../tests/Fixtures/Wine/*"
+
+    App\Tests\Fixtures\Shared\Domain\FixtureLoader:
+        class: 'App\Tests\Fixtures\Shared\Infrastructure\MySqlFixtureLoader'

@@ -1,0 +1,25 @@
+imports:
+    - { resource: services/commandbus.yaml }
+
+services:
+    # default configuration for services in *this* file
+    _defaults:
+        autowire: true      # Automatically injects dependencies in your services.
+        autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+        bind:
+            '$bd' : "%env(resolve:DATABASE_DBNAME)%"
+    App\Shared\Infrastructure\EntryPoint\EntryPointToJsonResponse: ~
+
+    App\Wine\Infrastructure\EntryPoint\Controller\:
+        resource: "../src/Wine/Infrastructure/EntryPoint/Controller/*"
+        tags: [ "controller.service_arguments" ]
+
+    App\Wine\Domain\Repository\UserRepository:
+        class: 'App\Wine\Infrastructure\Repository\Persistence\Doctrine\MySqlUserRepository'
+        arguments: ["@doctrine.orm.entity_manager"]
+
+    App\Wine\Infrastructure\Service\:
+        resource: "../src/Wine/Infrastructure/Service"
+
+    App\Wine\Domain\Service\:
+        resource: "../src/Wine/Domain/Service"

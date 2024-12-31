@@ -1,0 +1,62 @@
+services:
+
+  web:
+    container_name: web_server_wine
+    image: nginx:1.16.1-alpine
+    working_dir: /var/www/html
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - ~/core-dev/wine:/var/www/html/wine
+      - .docker-local/nginx/cert:/root/ssl/:ro
+      - .docker-local/nginx/sites:/etc/nginx/conf.d/:ro
+    depends_on:
+      - php-fpm
+    networks:
+      - wine-network
+
+  php-fpm:
+    container_name: php83_server_wine
+    working_dir: /var/www/html/
+    build:
+      context: ./.docker-local/php83
+      dockerfile: Dockerfile
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    expose:
+      - 9000
+    volumes:
+      - ~/core-dev/wine:/var/www/html/wine
+      - ~/.ssh:/home/1000/.ssh
+    depends_on:
+      - mysql
+    user: ${CURRENT_UID}
+    networks:
+      - wine-network
+    deploy:
+      resources:
+        limits:
+          memory: 1024M
+
+  mysql:
+    container_name: mysql_server_wine
+    build:
+      context: ./.docker-local/mysql
+      dockerfile: Dockerfile
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_DATABASE=wine
+    ports:
+      - 3306:3306
+    networks:
+      - wine-network
+    volumes:
+      - ~/core-dev/wine/.docker-local:/mnt/docker-local
+    deploy:
+      resources:
+        limits:
+          memory: 1024M
+
+networks:
+  wine-network:

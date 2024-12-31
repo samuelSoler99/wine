@@ -1,0 +1,17 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: false
+
+  App\Shared\Domain\Bus\CommandBus:
+    class: 'App\Shared\Infrastructure\Bus\TacticianCommandBus'
+    arguments:
+      - "@tactician.commandbus"
+
+  App\Wine\Application\Command\Handler\LoginHandler:
+    tags:
+      - {
+        name: tactician.handler,
+        command: App\Wine\Application\Command\Login,
+        bus: default,
+      }
