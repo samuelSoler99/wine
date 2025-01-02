@@ -4,6 +4,7 @@ namespace App\Wine\Domain\Entity;
 
 use App\Shared\Domain\ValueObject\StringValueObject;
 use App\Shared\Domain\ValueObject\Uuid;
+use App\Wine\Domain\ValueObject\UserPasswordVO;
 
 class User
 {
@@ -12,7 +13,7 @@ class User
         private StringValueObject $name,
         private StringValueObject $lastName,
         private StringValueObject $email,
-        private StringValueObject $password,
+        private UserPasswordVO $password,
     ) {
     }
 
@@ -21,7 +22,7 @@ class User
         StringValueObject $name,
         StringValueObject $lastName,
         StringValueObject $email,
-        StringValueObject $password
+        UserPasswordVO $password
     ): self {
         return new self(
             $id,
@@ -52,7 +53,8 @@ class User
         return $this->email;
     }
 
-    public function password(): StringValueObject
+    public function password(): UserPasswordVO
     {
-        return $this->password;}
+        return $this->password;
+    }
 }

@@ -15,6 +15,7 @@ doctrine:
             UuidType: App\Shared\Infrastructure\Repository\Persistence\Doctrine\CustomType\UuidType
             StringValueObjectType: App\Shared\Infrastructure\Repository\Persistence\Doctrine\CustomType\StringValueObjectType
             IntegerValueObjectType: App\Shared\Infrastructure\Repository\Persistence\Doctrine\CustomType\IntegerValueObjectType
+            UserPasswordValueObjectType: App\Wine\Infrastructure\Repository\Persistence\Doctrine\CustomType\UserPasswordValueObjectType
 
     orm:
         auto_generate_proxy_classes: true

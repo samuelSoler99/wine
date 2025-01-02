@@ -6,7 +6,9 @@ use App\Shared\Domain\ValueObject\StringValueObject;
 use App\Shared\Domain\ValueObject\Uuid;
 use App\Tests\Mother\Shared\Domain\ValueObject\StringValueObjectMother;
 use App\Tests\Mother\Shared\Domain\ValueObject\UuidMother;
+use App\Tests\Mother\Wine\Domain\ValueObject\UserPasswordMother;
 use App\Wine\Domain\Entity\User;
+use App\Wine\Domain\ValueObject\UserPasswordVO;
 
 class UserMother
 {
@@ -14,7 +16,7 @@ class UserMother
     private StringValueObject $name;
     private StringValueObject $lastName;
     private StringValueObject $email;
-    private StringValueObject $password;
+    private UserPasswordVO $password;
 
     public static function random(): User
     {
@@ -27,7 +29,7 @@ class UserMother
         $this->name = StringValueObjectMother::random();
         $this->lastName = StringValueObjectMother::random();
         $this->email = StringValueObjectMother::random();
-        $this->password = StringValueObjectMother::random();
+        $this->password = UserPasswordMother::random();
         return $this;
     }
 
@@ -55,7 +57,7 @@ class UserMother
         return $this;
     }
 
-    public function withPassword(StringValueObject $password): self
+    public function withPassword(UserPasswordVO $password): self
     {
         $this->password = $password;
         return $this;

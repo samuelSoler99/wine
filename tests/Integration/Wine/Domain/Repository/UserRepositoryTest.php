@@ -13,6 +13,7 @@ class UserRepositoryTest extends UserRepositoryIntegrationTestCase
 {
     public function testFindOneBy(): void
     {
+
         $user = $this->repository()->findOneBy(
             Criteria::create(
                 Filters::fromValues([
@@ -20,7 +21,6 @@ class UserRepositoryTest extends UserRepositoryIntegrationTestCase
                 ])
             )
         );
-
         $this->assertInstanceOf(User::class, $user);
         $this->assertEquals(UserFixture::USUARIO_1_ID, $user->id()->value);
     }

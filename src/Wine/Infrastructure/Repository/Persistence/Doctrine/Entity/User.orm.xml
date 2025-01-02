@@ -10,6 +10,6 @@
         <field name="name" column="nombre" type="StringValueObjectType" length="100" />
         <field name="lastName" column="apellido" type="StringValueObjectType" length="100" />
         <field name="email" column="email" type="StringValueObjectType" length="100" />
-        <field name="password" column="password" type="StringValueObjectType" length="100" />
+        <field name="password" column="password" type="UserPasswordValueObjectType" length="128" />
     </entity>
 </doctrine-mapping>

@@ -52,14 +52,14 @@ final class Version20241230153542 extends AbstractMigration
                 'nombre' => 'samuel',
                 'apellido' => 'soler',
                 'email' => 'ssoler@gmail.com',
-                'password' => 'abc123',
+                'password' => 'bd1e122878a61b9d25ea995ca08fcf7779dd501f0aa87b065bdd74fb2515a395',
             ],
             [
                 'uuid' => RamseyUuid::uuid4()->toString(),
                 'nombre' => 'paco',
                 'apellido' => 'soler',
                 'email' => 'paco@gmail.com',
-                'password' => 'abc123',
+                'password' => 'bd1e122878a61b9d25ea995ca08fcf7779dd501f0aa87b065bdd74fb2515a395',
             ],
         ];
 

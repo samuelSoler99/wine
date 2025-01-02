@@ -8,6 +8,7 @@ use App\Shared\Domain\ValueObject\StringValueObject;
 use App\Wine\Application\Command\Login;
 use App\Wine\Domain\Exception\UserNotFound;
 use App\Wine\Domain\Service\GetOneUserByCriteria;
+use App\Wine\Domain\ValueObject\UserPasswordVO;
 
 class LoginHandler
 {
@@ -24,7 +25,7 @@ class LoginHandler
                     Filters::fromValues(
                         [
                             'email' => StringValueObject::fromString($command->email),
-                            'password' => StringValueObject::fromString($command->password)
+                            'password' => UserPasswordVO::fromString($command->password)
                         ],
                     )
                 )
