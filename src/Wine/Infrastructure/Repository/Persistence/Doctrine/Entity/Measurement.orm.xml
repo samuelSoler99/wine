@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doctrine-mapping
+        xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+        https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+    <entity name="App\Wine\Domain\Entity\Measurement" table="measurements">
+        <id name="id" column="uuid" type="UuidType" length="36"/>
+        <field name="idSensor" column="idSensor" type="UuidType" length="36"/>
+        <field name="idWine" column="idWine" type="UuidType" length="36"/>
+        <field name="color" column="color" type="StringValueObjectType" length="100"/>
+        <field name="year" column="year" type="IntegerValueObjectType" length="100"/>
+        <field name="temperature" column="temperature" type="IntegerValueObjectType" length="100"/>
+        <field name="graduation" column="graduation" type="IntegerValueObjectType" length="100"/>
+        <field name="pH" column="pH" type="IntegerValueObjectType" length="100"/>
+    </entity>
+</doctrine-mapping>

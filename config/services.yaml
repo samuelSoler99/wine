@@ -6,20 +6,35 @@ services:
     _defaults:
         autowire: true      # Automatically injects dependencies in your services.
         autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
-        bind:
-            '$bd' : "%env(resolve:DATABASE_DBNAME)%"
     App\Shared\Infrastructure\EntryPoint\EntryPointToJsonResponse: ~
-
+    ### Controllers ###
     App\Wine\Infrastructure\EntryPoint\Controller\:
         resource: "../src/Wine/Infrastructure/EntryPoint/Controller/*"
         tags: [ "controller.service_arguments" ]
-
+    ### Repositories ###
     App\Wine\Domain\Repository\UserRepository:
         class: 'App\Wine\Infrastructure\Repository\Persistence\Doctrine\MySqlUserRepository'
         arguments: ["@doctrine.orm.entity_manager"]
 
+    App\Wine\Domain\Repository\SensorRepository:
+        class: 'App\Wine\Infrastructure\Repository\Persistence\Doctrine\MySqlSensorRepository'
+        arguments: [ "@doctrine.orm.entity_manager" ]
+
+    App\Wine\Domain\Repository\WineRepository:
+        class: 'App\Wine\Infrastructure\Repository\Persistence\Doctrine\MySqlWineRepository'
+        arguments: [ "@doctrine.orm.entity_manager" ]
+
+    App\Wine\Domain\Repository\MeasurementRepository:
+        class: 'App\Wine\Infrastructure\Repository\Persistence\Doctrine\MySqlMeasurementRepository'
+        arguments: [ "@doctrine.orm.entity_manager" ]
+    ### Services ###
     App\Wine\Infrastructure\Service\:
         resource: "../src/Wine/Infrastructure/Service"
 
     App\Wine\Domain\Service\:
         resource: "../src/Wine/Domain/Service"
+
+    ### Transformers ###
+    App\Wine\Application\:
+        resource: '../src/Wine/Application'
+        exclude: '../src/Wine/Application/{Command}'

@@ -15,3 +15,35 @@ services:
         command: App\Wine\Application\Command\Login,
         bus: default,
       }
+
+  App\Wine\Application\Command\Handler\CreateSensorHandler:
+    tags:
+      - {
+        name: tactician.handler,
+        command: App\Wine\Application\Command\CreateSensor,
+        bus: default,
+      }
+
+  App\Wine\Application\Command\Handler\ListSensorsShortedByNameHandler:
+    tags:
+      - {
+        name: tactician.handler,
+        command: App\Wine\Application\Command\ListSensorsShortedByName,
+        bus: default,
+      }
+
+  App\Wine\Application\Command\Handler\ListWinesHandler:
+    tags:
+      - {
+        name: tactician.handler,
+        command: App\Wine\Application\Command\ListWines,
+        bus: default,
+      }
+
+  App\Wine\Application\Command\Handler\CreateMeasurementHandler:
+    tags:
+      - {
+        name: tactician.handler,
+        command: App\Wine\Application\Command\CreateMeasurement,
+        bus: default,
+      }

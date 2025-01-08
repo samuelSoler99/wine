@@ -37,8 +37,6 @@ install: hosts
 	$(MAKE) destroy
 	docker compose up -d
 	$(MAKE) composer-install-wine
-	$(MAKE) migration-apply
-	$(MAKE) migration-apply-test
 logs:
 	docker compose logs -f
 

@@ -65,14 +65,12 @@ class UserMother
 
     public function instantiate(): User
     {
-        $user = User::instantiate(
+        return User::instantiate(
             $this->uuid,
             $this->name,
             $this->lastName,
             $this->email,
             $this->password
         );
-
-        return $user;
     }
 }

@@ -3,7 +3,27 @@
 #        path: ../src/Controller/
 #        namespace: App\Controller
 #    type: attribute
-index:
+login:
     path: /login
     controller: App\Wine\Infrastructure\EntryPoint\Controller\PostLoginController
+    methods: POST
+
+post_sensor:
+    path: /sensor
+    controller: App\Wine\Infrastructure\EntryPoint\Controller\PostSensorController
+    methods: POST
+
+get_sensors_short_by_name:
+    path: /shorted-sensors
+    controller: App\Wine\Infrastructure\EntryPoint\Controller\GetSensorsShortByNameController
+    methods: GET
+
+get_wines:
+    path: /wines
+    controller: App\Wine\Infrastructure\EntryPoint\Controller\GetWinesWithMeasurementsController
+    methods: GET
+
+post_measurement:
+    path: /measurement
+    controller: App\Wine\Infrastructure\EntryPoint\Controller\PostMeasurementController
     methods: POST

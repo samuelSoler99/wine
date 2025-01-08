@@ -4,7 +4,10 @@ namespace App\Wine\Infrastructure\EntryPoint\Controller;
 
 use App\Shared\Domain\Bus\CommandBus;
 use App\Shared\Infrastructure\EntryPoint\EntryPointToJsonResponse;
+use App\Wine\Application\Command\CreateMeasurement;
 use App\Wine\Application\Command\Login;
+use App\Wine\Domain\Exception\SensorNotFound;
+use App\Wine\Domain\Exception\WineNotFound;
 use App\Wine\Infrastructure\Service\CheckParams;
 use InvalidArgumentException;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -12,16 +15,20 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Throwable;
 
-class PostLoginController
+class PostMeasurementController
 {
     private const MANDATORY_PARAMS = [
         'password',
-        'email'
+        'email',
+        'idSensor',
+        'idWine',
+        'color',
+        'year',
+        'temperature',
+        'graduation',
+        'pH'
     ];
 
-    /**
-     * TODO se deberia de generar un token JWT con un ttl en la respuesta y un midelware para que verificara los otros controllers
-     */
     public function __invoke(
         Request $request,
         EntryPointToJsonResponse $response,
@@ -39,15 +46,34 @@ class PostLoginController
 
             if (!$loginValidation) {
                 return $response->response(
-                    ['success' => false],
+                    [
+                        'success' => false,
+                        'message' => 'Login validation failed'
+                    ],
                     200
                 );
             }
+
+            $commandBus->handle(
+                new CreateMeasurement(
+                    $params['idSensor'],
+                    $params['idWine'],
+                    $params['color'],
+                    $params['year'],
+                    $params['temperature'],
+                    $params['graduation'],
+                    $params['pH']
+                )
+            );
 
             return $response->response(
                 ['success' => true],
                 200
             );
+        } catch (SensorNotFound $e) {
+            return $response->error('received idSensor, does not exist', $e->getCode());
+        } catch (WineNotFound $e) {
+            return $response->error('received IdWine, does not exist', $e->getCode());
         } catch (InvalidArgumentException $e) {
             return $response->error($e->getMessage(), $e->getCode());
         } catch (Throwable $e) {

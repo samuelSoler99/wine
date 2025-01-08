@@ -18,13 +18,13 @@ class IntegerValueObjectType extends IntegerType
         return is_integer($value) ? $value : $value->value;
     }
 
-    public function convertToPHPValue($value, AbstractPlatform $platform): ?int
+    public function convertToPHPValue($value, AbstractPlatform $platform): mixed
     {
         if (is_null($value)) {
             return null;
         }
 
-        return IntegerValueObject::fromInt((int)$value)->value;
+        return IntegerValueObject::fromInt((int)$value);
     }
 
 }

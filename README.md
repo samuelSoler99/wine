@@ -23,3 +23,6 @@ y añadir al cuerpo como raw json `{
 # TO DO
 - Mover shared y wine a un boundedContext superior que lo englobe todo y valorar si crear un contexto exclusivo para usuarios, de manera que se pueda reutilizar esta prueba en futuras ocasiones.
 - Crear tests funcionales.
+- Crear test unitarios y integracion para el caso de uso de listar vinos y mediciones, crear medicion
+- Crear test unitarios para los viewMapper
+- Instalar swager y documentar los endpoint
