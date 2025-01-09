@@ -4,11 +4,7 @@
 - lanzar `make install`
 - lanzar test unitarios `make unit-test`
 - lanzar test integracíon `make integration-test`
-- adjunto coleccion de postman para probar la api, es el fichero 'Wine.postma_collection.json' en la raiz del proyecto, de cualquier forma acceder `wine.test/login` por `POST`
-y añadir al cuerpo como raw json `{
-    "password": "abc123",
-    "email": "ssoler@gmail.com"
-}`
+- adjunto coleccion de postman para probar la api, es el fichero 'Wine.postma_collection.json' en la raiz del proyecto 
 - Para conectarnos a la base de datos desde el editor que usemos, utilizar localhost:3306, con el usuario root y la contraseña password.
 
 # ShortCuts
