@@ -7,9 +7,9 @@ use App\Shared\Infrastructure\EntryPoint\EntryPointToJsonResponse;
 use App\Wine\Application\Command\ListSensorsShortedByName;
 use App\Wine\Application\Command\Login;
 use App\Wine\Application\DataTransformer\SensorToArray;
-use App\Wine\Domain\Exception\SensorAlreadyExists;
 use App\Wine\Infrastructure\Service\CheckParams;
 use InvalidArgumentException;
+use OpenApi\Annotations as OA;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -22,6 +22,47 @@ class GetSensorsShortByNameController
         'email',
     ];
 
+    /**
+     * @OA\Get(
+     *     path="/sensors/shorted",
+     *     summary="Obtener sensores ordenados por nombre.",
+     *     description="Retorna una lista de sensores ordenados alfabéticamente por nombre.",
+     *     tags={"Sensors"},
+     *     @OA\Response(
+     *         response=200,
+     *         description="Lista de sensores ordenados por nombre.",
+     *         @OA\JsonContent(
+     *             type="object",
+     *             @OA\Property(property="status", type="integer", example=200),
+     *             @OA\Property(
+     *                 property="data",
+     *                 type="array",
+     *                 @OA\Items(
+     *                     type="object",
+     *                     @OA\Property(property="id", type="string", example="afb59190-4deb-11ed-bdc3-0242ac120002"),
+     *                     @OA\Property(property="name", type="string", example="sensor de vino blanco")
+     *                 )
+     *             )
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=400,
+     *         description="Parámetros inválidos.",
+     *         @OA\JsonContent(
+     *             type="object",
+     *             @OA\Property(property="error", type="string", example="Invalid parameters.")
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=500,
+     *         description="Error interno del servidor.",
+     *         @OA\JsonContent(
+     *             type="object",
+     *             @OA\Property(property="error", type="string", example="Internal server error.")
+     *         )
+     *     )
+     * )
+     */
     public function __invoke(
         Request $request,
         EntryPointToJsonResponse $response,

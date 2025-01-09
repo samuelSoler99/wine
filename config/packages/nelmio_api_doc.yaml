@@ -1,0 +1,9 @@
+nelmio_api_doc:
+    documentation:
+        info:
+            title: 'Wine API'
+            description: 'API for management of wines and sensors'
+            version: '1.0.0'
+    areas:
+        default:
+            path_patterns: [ '^/' ]

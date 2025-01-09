@@ -43,7 +43,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"password\": \"abc123\",\n    \"email\": \"ssoler@gmail.com\"\n}",
+							"raw": "{\n    \"password\": \"abc123abc\",\n    \"email\": \"ssoler@gmail.com\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -58,6 +58,325 @@
 							],
 							"path": [
 								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Create Sensor",
+			"item": [
+				{
+					"name": "Wrong arguments Post Sensor",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"password\": \"abc123abc\",\n    \"email\": \"ssoler@gmail.com\",\n    \"name\" : \"sensorName 1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "wine.test/sensor",
+							"host": [
+								"wine",
+								"test"
+							],
+							"path": [
+								"sensor"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post Sensor",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"password\": \"abc123abc\",\n    \"email\": \"ssoler@gmail.com\",\n    \"sensorName\" : \"sensor de vino afrutado\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "wine.test/sensor",
+							"host": [
+								"wine",
+								"test"
+							],
+							"path": [
+								"sensor"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Sensor already Exist",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"password\": \"abc123abc\",\n    \"email\": \"ssoler@gmail.com\",\n    \"sensorName\" : \"sensor de vino blanco\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "wine.test/sensor",
+							"host": [
+								"wine",
+								"test"
+							],
+							"path": [
+								"sensor"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login Failed",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"password\": \"abc123abcX\",\n    \"email\": \"ssoler@gmail.com\",\n    \"sensorName\" : \"sensor de vino blanco\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "wine.test/sensor",
+							"host": [
+								"wine",
+								"test"
+							],
+							"path": [
+								"sensor"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "List Sensors shorted by name",
+			"item": [
+				{
+					"name": "Get sensors short by name",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"password\": \"abc123abc\",\n    \"email\": \"ssoler@gmail.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "wine.test/sensors/shorted",
+							"host": [
+								"wine",
+								"test"
+							],
+							"path": [
+								"sensors",
+								"shorted"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login Failed",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"password\": \"abc123abcX\",\n    \"email\": \"ssoler@gmail.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "wine.test/sensors/shorted",
+							"host": [
+								"wine",
+								"test"
+							],
+							"path": [
+								"sensors",
+								"shorted"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "List Wines",
+			"item": [
+				{
+					"name": "Wrong login",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "wine.test/wines",
+							"host": [
+								"wine",
+								"test"
+							],
+							"path": [
+								"wines"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Wines With measurements",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"password\": \"abc123abc\",\n    \"email\": \"ssoler@gmail.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "wine.test/wines",
+							"host": [
+								"wine",
+								"test"
+							],
+							"path": [
+								"wines"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Create Measurement",
+			"item": [
+				{
+					"name": "Create Fail IdWine not exist",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"password\": \"abc123abc\",\n    \"email\": \"ssoler@gmail.com\",\n    \"idSensor\" : \"afb59190-4deb-11ed-bdc3-0242ac120001\",\n    \"idWine\" : \"afb59190-4deb-11ed-bdc3-0242ac120007\",\n    \"color\" : \"white\",\n    \"year\" : 2025,\n    \"temperature\" : 33,\n    \"graduation\": 12,\n    \"pH\" : 2\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "wine.test/measurement",
+							"host": [
+								"wine",
+								"test"
+							],
+							"path": [
+								"measurement"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Fail idSensor not exist",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"password\": \"abc123abc\",\n    \"email\": \"ssoler@gmail.com\",\n    \"idSensor\" : \"afb59190-4deb-11ed-bdc3-0242ac120007\",\n    \"idWine\" : \"afb59190-4deb-11ed-bdc3-0242ac120001\",\n    \"color\" : \"white\",\n    \"year\" : 2025,\n    \"temperature\" : 33,\n    \"graduation\": 12,\n    \"pH\" : 2\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "wine.test/measurement",
+							"host": [
+								"wine",
+								"test"
+							],
+							"path": [
+								"measurement"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Success",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"password\": \"abc123abc\",\n    \"email\": \"ssoler@gmail.com\",\n    \"idSensor\" : \"afb59190-4deb-11ed-bdc3-0242ac120001\",\n    \"idWine\" : \"afb59190-4deb-11ed-bdc3-0242ac120002\",\n    \"color\" : \"white\",\n    \"year\" : 2025,\n    \"temperature\" : 33,\n    \"graduation\": 12,\n    \"pH\" : 2\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "wine.test/measurement",
+							"host": [
+								"wine",
+								"test"
+							],
+							"path": [
+								"measurement"
 							]
 						}
 					},

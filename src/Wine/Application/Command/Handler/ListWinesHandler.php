@@ -35,6 +35,7 @@ class ListWinesHandler
                 ])
             )
         );
+
         $measurements = $this->measurementsViewByIdMapper->map($measurements);
 
         return $this->winesViewByIdMapper->map($wines, $measurements);

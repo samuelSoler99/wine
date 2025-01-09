@@ -14,7 +14,7 @@ post_sensor:
     methods: POST
 
 get_sensors_short_by_name:
-    path: /shorted-sensors
+    path: /sensors/shorted
     controller: App\Wine\Infrastructure\EntryPoint\Controller\GetSensorsShortByNameController
     methods: GET
 

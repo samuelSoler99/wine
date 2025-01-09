@@ -3,11 +3,14 @@
 namespace App\Tests\Unit\Wine\Infrastructure\PhpUnit;
 
 use App\Tests\Unit\Shared\SharedModuleUnitTestCase;
+use App\Wine\Domain\Entity\Measurement;
 use App\Wine\Domain\Entity\Sensor;
 use App\Wine\Domain\Entity\User;
 use App\Wine\Domain\Entity\Wine;
 use App\Wine\Domain\Exception\SensorNotFound;
 use App\Wine\Domain\Exception\UserNotFound;
+use App\Wine\Domain\Exception\WineNotFound;
+use App\Wine\Domain\Repository\MeasurementRepository;
 use App\Wine\Domain\Repository\SensorRepository;
 use App\Wine\Domain\Repository\UserRepository;
 use App\Wine\Domain\Repository\WineRepository;
@@ -24,6 +27,34 @@ class WineModuleUnitTestCase extends SharedModuleUnitTestCase
     private GetOneSensorByCriteria $getOneSensorByCriteria;
     private WineRepository $wineRepository;
     private GetOneWineByCriteria $getOneWineByCriteria;
+    private MeasurementRepository $measurementRepository;
+
+    public function measurementRepository(): MeasurementRepository|MockInterface
+    {
+        if (empty($this->measurementRepository)) {
+            $this->measurementRepository = $this->mock(MeasurementRepository::class);
+        }
+
+        return $this->measurementRepository;
+    }
+
+    public function shouldMeasurementRepositorySave(): void
+    {
+        $this->measurementRepository()
+            ->shouldReceive('save')
+            ->once();
+    }
+
+    /**
+     * @param Measurement[] $measurements
+     */
+    public function shouldMeasurementRepositoryFindBy(array $measurements): void
+    {
+        $this->measurementRepository()
+            ->shouldReceive('findBy')
+            ->once()
+            ->andReturn($measurements);
+    }
 
     public function wineRepository(): WineRepository|MockInterface
     {
@@ -51,6 +82,17 @@ class WineModuleUnitTestCase extends SharedModuleUnitTestCase
             ->andReturn($wine);
     }
 
+    /**
+     * @param Wine[] $wines
+     */
+    public function shouldWineRepositoryFindAll(array $wines): void
+    {
+        $this->wineRepository()
+            ->shouldReceive('findAll')
+            ->once()
+            ->andReturn($wines);
+    }
+
     public function sensorRepository(): SensorRepository|MockInterface
     {
         if (empty($this->sensorRepository)) {
@@ -75,6 +117,14 @@ class WineModuleUnitTestCase extends SharedModuleUnitTestCase
             ->shouldReceive('findOneBy')
             ->once()
             ->andReturn($sensor);
+    }
+
+    public function shouldGetOneWineByCriteria(Wine $wine): void
+    {
+        $this->getOneWineByCriteria()
+            ->shouldReceive('execute')
+            ->once()
+            ->andReturn($wine);
     }
 
     public function shouldGetOneSensorByCriteriaThrowException(): void
@@ -150,5 +200,13 @@ class WineModuleUnitTestCase extends SharedModuleUnitTestCase
             ->shouldReceive('execute')
             ->once()
             ->andThrow(UserNotFound::class);
+    }
+
+    public function shouldGetOneWineByCriteriaThrowException(): void
+    {
+        $this->getOneWineByCriteria()
+            ->shouldReceive('execute')
+            ->once()
+            ->andThrow(WineNotFound::class);
     }
 }

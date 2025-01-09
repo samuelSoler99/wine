@@ -5,16 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2fe778bf-305e-43e1-ad1c-59c5bb2c3b26" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/routes.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/services.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/services/commandbus.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/services/commandbus.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Wine/Infrastructure/EntryPoint/Controller/PostLoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Wine/Infrastructure/EntryPoint/Controller/PostLoginController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Fixtures/Shared/Infrastructure/MySqlFixtureLoader.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Fixtures/Shared/Infrastructure/MySqlFixtureLoader.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Integration/Wine/Infrastructure/PhpUnit/WineIntegrationTestCase.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Integration/Wine/Infrastructure/PhpUnit/WineIntegrationTestCase.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Mother/Wine/Domain/Entity/UserMother.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Mother/Wine/Domain/Entity/UserMother.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Unit/Wine/Infrastructure/PhpUnit/WineModuleUnitTestCase.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Unit/Wine/Infrastructure/PhpUnit/WineModuleUnitTestCase.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -191,6 +182,8 @@
       <workItem from="1736274643410" duration="704000" />
       <workItem from="1736323765015" duration="2000" />
       <workItem from="1736364755212" duration="803000" />
+      <workItem from="1736407503941" duration="599000" />
+      <workItem from="1736453515214" duration="4000" />
     </task>
     <servers />
   </component>
